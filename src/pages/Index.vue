@@ -388,7 +388,7 @@ export default {
     } else {
       if (typeof window.OneSignal === 'undefined') {
         let os_api = 'efc392fc-0d14-40b1-bda7-891ce18b9eca'
-        if(location.hostname == 'juh-rv-baden-ee1') os_api='juh-rv-baden-ee1'
+        if(location.hostname == 'juh-rv-baden-ee1') os_api='efc392fc-0d14-40b1-bda7-891ce18b9eca'
         this.$oneSignal.setup(os_api)
       }
       if (window.localStorage.getItem('s2') !== null) {
