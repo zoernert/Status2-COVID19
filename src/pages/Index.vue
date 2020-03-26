@@ -50,6 +50,14 @@
                     hint="(Bitte im Format 0171-123456)"
                     @change='save()'
                   />
+                  <div class='text-h6'>Email</div>
+                    <q-input
+                      outlined
+                      type='email'
+                      v-model="email"
+                      hint="(für Benachrichtigungen/Erinnerungen)"
+                      @change='save()'
+                    />
         </q-card-section>
     </q-card>
     <q-card  class="shadow-8" style='margin-bottom:25px;'>
@@ -185,7 +193,7 @@
             <q-item-section>
                 <q-item-label caption>{{ helfer.code }}</q-item-label>
                 <q-item-label>{{ helfer.vornamen }} {{ helfer.nachnamen }}</q-item-label>
-                <q-item-label>{{ helfer.mobilfunk }} </q-item-label>
+                <q-item-label>{{ helfer.mobilfunk }} {{ helfer.email }}</q-item-label>
             </q-item-section>
           </q-list>
         </q-card-section>
@@ -195,7 +203,7 @@
             <q-item-section>
                 <q-item-label caption>{{ helfer.code }}</q-item-label>
                 <q-item-label>{{ helfer.vornamen }} {{ helfer.nachnamen }}</q-item-label>
-                <q-item-label>{{ helfer.mobilfunk }} </q-item-label>
+                <q-item-label>{{ helfer.mobilfunk }} {{ helfer.email }} </q-item-label>
             </q-item-section>
           </q-list>
         </q-card-section>
@@ -250,7 +258,7 @@ export default {
     res.timeout2 = []
     res.accessLevel = 0
     res.viewStaerke = false
-
+    res.email = ''
     return res
   },
   methods: {
