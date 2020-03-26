@@ -207,6 +207,17 @@
             </q-item-section>
           </q-list>
         </q-card-section>
+        <q-card-section>
+          <q-table
+                :data="items"
+                :columns="columns"
+                row-key="code"
+                flat
+                virtual-scroll
+                :rows-per-page-options="[0]"
+          >
+          </q-table>
+        </q-card-section>
     </q-card>
     <q-toggle v-model="viewStaerke" @input='if(viewStaerke) accessLevel = 1; else accessLevel = 0'/> Stärkemeldungen anzeigen
   </q-page>
@@ -240,11 +251,17 @@ export default {
       qual_arzt: false,
       qual_notarzt: false
     }
+    const columns = []
+    columns.push({ name: 'vornamen', align: 'left', label: 'Vornamen', field: 'vornamen', sortable: true })
+    columns.push({ name: 'nachnamen', align: 'left', label: 'Nachnamen', field: 'nachnamen', sortable: true })
+    columns.push({ name: 'availability', align: 'left', label: 'Verfügbarkeit', field: 'availability', sortable: true })
     for (var propName in res) {
+      columns.push({ name: propName, align: 'left', label: propName, field: propName, sortable: true })
       if (typeof res[propName + '_green'] === 'undefined') res[propName + '_green'] = 0
       if (typeof res[propName + '_yellow'] === 'undefined') res[propName + '_yellow'] = 0
       if (typeof res[propName + '_red'] === 'undefined') res[propName + '_red'] = 0
     }
+    res.columns = columns
     res._green = 0
     res._yellow = 0
     res._red = 0
@@ -259,6 +276,7 @@ export default {
     res.accessLevel = 0
     res.viewStaerke = false
     res.email = ''
+    res.items = []
     return res
   },
   methods: {
@@ -294,6 +312,7 @@ export default {
         }
         const timeout1 = []
         const timeout2 = []
+        parent.items = response.data.Items
         for (let j = 0; j < response.data.Items.length; j++) {
           if (response.data.Items[j].timeStamp > new Date().getTime() - (preferedTimeout2)) {
             for (var propName in response.data.Items[j]) {
@@ -304,6 +323,10 @@ export default {
                   if (typeof cachepros[propName + '_red'] === 'undefined') cachepros[propName + '_red'] = 0
                   cachepros[propName + '_' + response.data.Items[j].availability]++
                 }
+              }
+              if (response.data.Items[j].code === window.localStorage.getItem('code')) {
+                cachepros[propName] = response.data.Items[j][propName]
+                console.log(propName)
               }
             }
             if (response.data.Items[j].availability === 'green') cachepros._green++
