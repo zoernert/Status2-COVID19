@@ -387,9 +387,9 @@ export default {
       this.$router.push('/anmelden')
     } else {
       if (typeof window.OneSignal === 'undefined') {
-        let os_api = 'efc392fc-0d14-40b1-bda7-891ce18b9eca'
-        if(location.hostname == 'juh-rv-baden-ee1') os_api='juh-rv-baden-ee1'
-        this.$oneSignal.setup(os_api)
+        let osApi = 'efc392fc-0d14-40b1-bda7-891ce18b9eca'
+        if(location.hostname == 'juh-rv-baden-ee1') osApi='juh-rv-baden-ee1'
+        this.$oneSignal.setup(osApi)
       }
       if (window.localStorage.getItem('s2') !== null) {
         const obj = JSON.parse(window.localStorage.getItem('s2'))
