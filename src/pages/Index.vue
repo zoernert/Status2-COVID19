@@ -206,8 +206,8 @@
 
 <script>
 import axios from 'axios'
-const preferedTimeout1 = 60000
-const preferedTimeout2 = 900000
+const preferedTimeout1 = 24 * 3600 * 1000
+const preferedTimeout2 = 36 * 3600 * 1000
 
 export default {
   name: 'Anmeldung',
