@@ -208,6 +208,7 @@
           </q-list>
         </q-card-section>
         <q-card-section>
+          <div class='text-h6'>Helferübersicht</div>
           <q-table
                 :data="items"
                 :columns="columns"
