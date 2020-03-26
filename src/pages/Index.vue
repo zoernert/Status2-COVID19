@@ -249,7 +249,7 @@ export default {
       const OneSignal = window.OneSignal
       const parent = this
       OneSignal.push(['getNotificationPermission', function (permission) {
-        OneSignal.push(['sendTags', { code: window.localStorage.getItem('code'), domain: location.hostname, availability: this.availability }])
+        OneSignal.push(['sendTags', { code: window.localStorage.getItem('code'), domain: location.hostname, availability: parent.availability }])
         if (permission === 'granted') {
 
         } else {
