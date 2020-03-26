@@ -90,6 +90,7 @@ export default {
     save () {
       if (this.code.length === 7) this.nosave = false; else this.nosave = true
       if (!this.nosave) {
+        window.localStorage.removeItem('s2')
         window.localStorage.setItem('code', this.code.toLowerCase())
         this.$router.push('/')
       }
