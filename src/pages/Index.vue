@@ -284,7 +284,7 @@ export default {
             if (response.data.Items[j].availability === 'green') cachepros._green++
             if (response.data.Items[j].availability === 'yellow') cachepros._yellow++
             if (response.data.Items[j].availability === 'red') cachepros._red++
-          } else
+          }
           if (response.data.Items[j].timeStamp < new Date().getTime() - (preferedTimeout2)) {
             timeout2.push(response.data.Items[j].code)
           } else
