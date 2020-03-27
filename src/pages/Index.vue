@@ -277,6 +277,7 @@ export default {
     res.viewStaerke = false
     res.email = ''
     res.items = []
+    res.osid = ''
     return res
   },
   methods: {
@@ -295,7 +296,7 @@ export default {
       OneSignal.push(['getNotificationPermission', function (permission) {
         OneSignal.push(['sendTags', { code: window.localStorage.getItem('code'), domain: location.hostname, availability: parent.availability }])
         if (permission === 'granted') {
-
+          window.OneSignal.getUserId().then(function (x) { parent.osid = x })
         } else {
           console.log('notGranted')
           setTimeout(function () {
@@ -306,7 +307,7 @@ export default {
     },
     retrieve () {
       const parent = this
-      axios.get('https://api.corrently.io/core/status2?domain=' + this.domain + '&code=' + window.localStorage.getItem('code')).then(async function (response) {
+      axios.get('https://api.corrently.io/core/status2?domain=' + this.domain + '&osid=' + this.osid + '&code=' + window.localStorage.getItem('code')).then(async function (response) {
         const cachepros = {
           _green: 0,
           _yellow: 0,
