@@ -291,11 +291,13 @@ export default {
     checkGranted () {
       const OneSignal = window.OneSignal
       const parent = this
+      console.log('checkGranted')
       OneSignal.push(['getNotificationPermission', function (permission) {
         OneSignal.push(['sendTags', { code: window.localStorage.getItem('code'), domain: location.hostname, availability: parent.availability }])
         if (permission === 'granted') {
 
         } else {
+          console.log('notGranted')
           setTimeout(function () {
             parent.checkGranted()
           }, 5000)
