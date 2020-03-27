@@ -389,6 +389,7 @@ export default {
       this.$router.push('/anmelden')
     } else {
       if (typeof window.OneSignal === 'undefined') {
+        console.log('secondary OS registration')
         this.$oneSignal.setup('98a1d9b6-1549-437f-9e24-682a30a9b48b')
       }
       if (window.localStorage.getItem('s2') !== null) {
