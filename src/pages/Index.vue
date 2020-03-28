@@ -216,7 +216,6 @@
                 flat
                 virtual-scroll
                 :pagination.sync="pagination"
-                :rows-per-page-options="[0]"
           >
           </q-table>
         </q-card-section>
