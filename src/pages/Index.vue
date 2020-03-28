@@ -219,7 +219,7 @@
           </q-table>
         </q-card-section>
     </q-card>
-    <q-toggle v-model="viewStaerke" @input='if(viewStaerke) accessLevel = 1; else accessLevel = 0' v-if='this.accessLevel > 0'/> Stärkemeldungen anzeigen
+    <q-toggle v-model="viewStaerke" @input='if(viewStaerke) accessLevel = 1; else accessLevel = 0' v-if='this.accessLevel > 0' label='Stärkemeldungen anzeigen'/>
   </q-page>
 </template>
 
