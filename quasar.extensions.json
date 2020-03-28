@@ -1,3 +1,24 @@
 {
-  "onesignal": {}
+  "onesignal": {},
+  "@quasar/icon-genie": {
+    "minify_dev": "pngquant",
+    "minify_build": "zopfli",
+    "cordova": {
+      "background_color": "#ffffff",
+      "splashscreen_type": "pure"
+    },
+    "build_always": true,
+    "__internal": {
+      "dev": {
+        "spa": {
+          "iconHash": "4ccb11f8fcf30f338d32859047fd3ad3"
+        }
+      },
+      "build": {
+        "spa": {
+          "iconHash": "4ccb11f8fcf30f338d32859047fd3ad3"
+        }
+      }
+    }
+  }
 }

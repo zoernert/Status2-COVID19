@@ -220,7 +220,7 @@
           </q-table>
         </q-card-section>
     </q-card>
-    <q-toggle v-model="viewStaerke" @input='if(viewStaerke) accessLevel = 1; else accessLevel = 0'/> Stärkemeldungen anzeigen
+    <q-toggle v-model="viewStaerke" @input='if(viewStaerke) accessLevel = 1; else accessLevel = 0' v-if='this.accessLevel > 0' label='Stärkemeldungen anzeigen'/>
   </q-page>
 </template>
 
@@ -278,6 +278,7 @@ export default {
     res.viewStaerke = false
     res.email = ''
     res.items = []
+    res.osid = ''
     return res
   },
   methods: {
@@ -292,11 +293,13 @@ export default {
     checkGranted () {
       const OneSignal = window.OneSignal
       const parent = this
+      console.log('checkGranted')
       OneSignal.push(['getNotificationPermission', function (permission) {
         OneSignal.push(['sendTags', { code: window.localStorage.getItem('code'), domain: location.hostname, availability: parent.availability }])
         if (permission === 'granted') {
-
+          window.OneSignal.getUserId().then(function (x) { parent.osid = x })
         } else {
+          console.log('notGranted')
           setTimeout(function () {
             parent.checkGranted()
           }, 5000)
@@ -305,7 +308,7 @@ export default {
     },
     retrieve () {
       const parent = this
-      axios.get('https://api.corrently.io/core/status2?domain=' + this.domain + '&code=' + window.localStorage.getItem('code')).then(async function (response) {
+      axios.get('https://api.corrently.io/core/status2?domain=' + this.domain + '&osid=' + this.osid + '&code=' + window.localStorage.getItem('code')).then(async function (response) {
         const cachepros = {
           _green: 0,
           _yellow: 0,
@@ -327,7 +330,6 @@ export default {
               }
               if (response.data.Items[j].code === window.localStorage.getItem('code')) {
                 cachepros[propName] = response.data.Items[j][propName]
-                console.log(propName)
               }
             }
             if (response.data.Items[j].availability === 'green') cachepros._green++
@@ -388,9 +390,8 @@ export default {
       this.$router.push('/anmelden')
     } else {
       if (typeof window.OneSignal === 'undefined') {
-        let osApi = 'efc392fc-0d14-40b1-bda7-891ce18b9eca'
-        if (location.hostname === 'juh-rv-baden-ee1') osApi = 'juh-rv-baden-ee1'
-        this.$oneSignal.setup(osApi)
+        console.log('secondary OS registration')
+        this.$oneSignal.setup('98a1d9b6-1549-437f-9e24-682a30a9b48b')
       }
       if (window.localStorage.getItem('s2') !== null) {
         const obj = JSON.parse(window.localStorage.getItem('s2'))
