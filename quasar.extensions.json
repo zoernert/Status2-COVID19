@@ -9,8 +9,16 @@
     },
     "build_always": true,
     "__internal": {
-      "dev": {},
-      "build": {}
+      "dev": {
+        "spa": {
+          "iconHash": "4ccb11f8fcf30f338d32859047fd3ad3"
+        }
+      },
+      "build": {
+        "spa": {
+          "iconHash": "4ccb11f8fcf30f338d32859047fd3ad3"
+        }
+      }
     }
   }
 }
