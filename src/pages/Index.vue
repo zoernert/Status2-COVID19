@@ -214,6 +214,7 @@
                 row-key="code"
                 flat
                 virtual-scroll
+                pagination.rows=32
                 :rows-per-page-options="[0]"
           >
           </q-table>
