@@ -312,8 +312,7 @@ export default {
     },
     retrieve () {
       const parent = this
-      let domain = this.domain
-      domain = 'stadt-mannheim-1ee.status2.net'
+      const domain = this.domain
       axios.get('https://api.corrently.io/core/status2?domain=' + domain + '&osid=' + this.osid + '&code=' + window.localStorage.getItem('code')).then(async function (response) {
         const cachepros = {
           _green: 0,
