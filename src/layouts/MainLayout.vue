@@ -15,7 +15,7 @@
           Status2
         </q-toolbar-title>
 
-        <div>COVID19-Edition</div>
+        <div><q-avatar><img src='/statics/patch.png'/></q-avatar></div>
       </q-toolbar>
     </q-header>
 
