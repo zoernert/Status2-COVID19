@@ -215,8 +215,7 @@
                 row-key="code"
                 flat
                 virtual-scroll
-                pagination.rows=32
-                :rows-per-page-options="[0]"
+                :pagination.sync="pagination"
           >
           </q-table>
         </q-card-section>
@@ -280,6 +279,9 @@ export default {
     res.email = ''
     res.items = []
     res.osid = ''
+    res.pagination = {
+      rowsPerPage: 32
+    }
     return res
   },
   methods: {
@@ -309,7 +311,9 @@ export default {
     },
     retrieve () {
       const parent = this
-      axios.get('https://api.corrently.io/core/status2?domain=' + this.domain + '&osid=' + this.osid + '&code=' + window.localStorage.getItem('code')).then(async function (response) {
+      let domain = this.domain
+      domain = 'stadt-mannheim-1ee.status2.net'
+      axios.get('https://api.corrently.io/core/status2?domain=' + domain + '&osid=' + this.osid + '&code=' + window.localStorage.getItem('code')).then(async function (response) {
         const cachepros = {
           _green: 0,
           _yellow: 0,
