@@ -317,7 +317,7 @@ export default {
     } else {
       if (typeof window.OneSignal === 'undefined') {
         console.log('secondary OS registration')
-        this.$oneSignal.setup('98a1d9b6-1549-437f-9e24-682a30a9b48b')
+        this.$oneSignal.setup(this.$branch.OS_PUBLIC_KEY)
       }
       if (window.localStorage.getItem('s2') !== null) {
         const obj = JSON.parse(window.localStorage.getItem('s2'))
