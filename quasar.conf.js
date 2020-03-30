@@ -57,7 +57,7 @@ module.exports = function (ctx) {
       vueRouterMode: 'hash', // available values: 'hash', 'history'
       env: {
         BRANCH: JSON.stringify(process.env.BRANCH)
-      }
+      },
       // rtl: false, // https://quasar.dev/options/rtl-support
       // showProgress: false,
       // gzip: true,
