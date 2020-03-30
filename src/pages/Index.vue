@@ -325,6 +325,12 @@ export default {
           this[propName] = obj[propName]
         }
       }
+      if (process.env.DEV) {
+        console.log('ENV: dev')
+      }
+      if (process.env.BRANCH) {
+        console.log('BRANCH', process.env.BRANCH)
+      }
       this.checkGranted()
       this.retrieve()
       const parent = this
