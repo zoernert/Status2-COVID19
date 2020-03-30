@@ -60,129 +60,9 @@
                     />
         </q-card-section>
     </q-card>
-    <q-card  class="shadow-8" style='margin-bottom:25px;'>
-        <q-card-section class='bg-primary text-white text-h5'>
-        Teileinheit
-        </q-card-section>
-        <q-card-section>
-          <q-form
-                class="q-gutter-md"
-          >
-           <q-checkbox v-model="lm_fuehrung" label="LM Führung" @input='save()'><br/>
-              <q-badge color='green' class='text-dark' v-if='this.accessLevel > 0'>{{ lm_fuehrung_green }}</q-badge>
-              <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ lm_fuehrung_yellow }}</q-badge>
-              <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ lm_fuehrung_red }}</q-badge>
-           </q-checkbox>
-           <q-checkbox v-model="lm_sanitaet" label="LM Sanität" @input='save()'><br/>
-             <q-badge color='green' class='text-dark' v-if='this.accessLevel > 0'>{{ lm_sanitaet_green }}</q-badge>
-             <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ lm_sanitaet_yellow }}</q-badge>
-             <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ lm_sanitaet_red }}</q-badge>
-           </q-checkbox>
-           <q-checkbox v-model="lm_betreuung" label="LM Betreuung" @input='save()'><br/>
-             <q-badge color='green' class='text-dark' v-if='this.accessLevel > 0'>{{ lm_betreuung_green }}</q-badge>
-             <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ lm_betreuung_yellow }}</q-badge>
-             <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ lm_betreuung_red }}</q-badge>
-           </q-checkbox>
-           <q-checkbox v-model="lm_transport" label="LM Transport" @input='save()'><br/>
-             <q-badge color='green' class='text-dark' v-if='this.accessLevel > 0'>{{ lm_transport_green }}</q-badge>
-             <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ lm_transport_yellow }}</q-badge>
-             <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ lm_transport_red }}</q-badge>
-           </q-checkbox>
-           <q-checkbox v-model="lm_tusi" label="LM Technik und Sicherheit" @input='save()'><br/>
-             <q-badge color='green' class='text-dark' v-if='this.accessLevel > 0'>{{ lm_tusi_green }}</q-badge>
-             <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ lm_tusi_yellow }}</q-badge>
-             <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ lm_tusi_red }}</q-badge>
-           </q-checkbox>
-         </q-form>
-        </q-card-section>
-    </q-card>
-    <q-card  class="shadow-8" style='margin-bottom:25px;'>
-        <q-card-section class='bg-primary text-white text-h5'>
-        Taktische Qualifikation
-        </q-card-section>
-        <q-card-section>
-          <q-form
-                class="q-gutter-md"
-          >
-           <q-checkbox v-model="takt_gruppe" label="Gruppenführer" @input='save()'><br>
-             <q-badge color='green' class='text-dark' v-if='this.accessLevel > 0'>{{ takt_gruppe_green }}</q-badge>
-             <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ takt_gruppe_yellow }}</q-badge>
-             <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ takt_gruppe_red }}</q-badge>
-           </q-checkbox>
-           <q-checkbox v-model="takt_zug" label="Zugführer" @input='save()'><br>
-             <q-badge color='green' class='text-dark' v-if='this.accessLevel > 0'>{{ takt_zug_green }}</q-badge>
-             <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ takt_zug_yellow }}</q-badge>
-             <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ takt_zug_red }}</q-badge>
-           </q-checkbox>
-           <q-checkbox v-model="takt_verband" label="Verbandführer" @input='save()'><br>
-             <q-badge color='green' class='text-dark' v-if='this.accessLevel > 0'>{{ takt_verband_green }}</q-badge>
-             <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ takt_verband_yellow }}</q-badge>
-             <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ takt_verband_red }}</q-badge>
-           </q-checkbox>
-           <q-checkbox v-model="takt_orgl" label="OrgL" @input='save()'><br>
-             <q-badge color='green' class='text-dark' v-if='this.accessLevel > 0'>{{ takt_orgl_green }}</q-badge>
-             <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ takt_orgl_yellow }}</q-badge>
-             <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ takt_orgl_red }}</q-badge>
-           </q-checkbox>
-           <q-checkbox v-model="takt_lna" label="LNA" @input='save()'><br>
-             <q-badge color='green' class='text-dark' v-if='this.accessLevel > 0'>{{ takt_lna_green }}</q-badge>
-             <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ takt_lna_yellow }}</q-badge>
-             <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ takt_lna_red }}</q-badge>
-           </q-checkbox>
-         </q-form>
-        </q-card-section>
-    </q-card>
-    <q-card  class="shadow-8" style='margin-bottom:25px;'>
-        <q-card-section class='bg-primary text-white text-h5'>
-        Medizinische Qualifikation
-        </q-card-section>
-        <q-card-section>
-          <q-form
-                class="q-gutter-md"
-          >
-           <q-checkbox v-model="qual_sanh" label="Sanitätshelfer" @input='save()'><br>
-             <q-badge color='green' class='text-dark' v-if='this.accessLevel > 0'>{{ qual_sanh_green }}</q-badge>
-             <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ qual_sanh_yellow }}</q-badge>
-             <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ qual_sanh_red }}</q-badge>
-           </q-checkbox>
-           <q-checkbox v-model="qual_rh" label="Rettungshelfer" @input='save()'><br>
-             <q-badge color='green' class='text-dark' v-if='this.accessLevel > 0'>{{ qual_rh_green }}</q-badge>
-             <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ qual_rh_yellow }}</q-badge>
-             <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ qual_rh_red }}</q-badge>
-           </q-checkbox>
-           <q-checkbox v-model="qual_rs" label="Rettungssanitäter" @input='save()'><br>
-             <q-badge color='green' class='text-dark' v-if='this.accessLevel > 0'>{{ qual_rs_green }}</q-badge>
-             <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ qual_rs_yellow }}</q-badge>
-             <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ qual_rs_red }}</q-badge>
-           </q-checkbox>
-           <q-checkbox v-model="qual_kp" label="Krankenpfleger" @input='save()'><br>
-             <q-badge color='green' class='text-dark' v-if='this.accessLevel > 0'>{{ qual_kp_green }}</q-badge>
-             <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ qual_kp_yellow }}</q-badge>
-             <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ qual_kp_red }}</q-badge>
-           </q-checkbox>
-           <q-checkbox v-model="qual_ra" label="Rettungsassistent" @input='save()'><br>
-             <q-badge color='green' class='text-dark' v-if='this.accessLevel > 0'>{{ qual_ra_green }}</q-badge>
-             <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ qual_ra_yellow }}</q-badge>
-             <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ qual_ra_red }}</q-badge>
-           </q-checkbox>
-           <q-checkbox v-model="qual_ns" label="Notfallsanitäter" @input='save()'><br>
-             <q-badge color='green' class='text-dark' v-if='this.accessLevel > 0'>{{ qual_ns_green }}</q-badge>
-             <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ qual_ns_yellow }}</q-badge>
-             <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ qual_ns_red }}</q-badge>
-           </q-checkbox>
-           <q-checkbox v-model="qual_arzt" label="Arzt" @input='save()'><br>
-             <q-badge color='green' class='text-dark' v-if='this.accessLevel > 0'>{{ qual_arzt_green }}</q-badge>
-             <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ qual_arzt_yellow }}</q-badge>
-             <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ qual_arzt_red }}</q-badge>
-           </q-checkbox>
-           <q-checkbox v-model="qual_notarzt" label="Notarzt" @input='save()'><br>
-             <q-badge color='green' class='text-dark' v-if='this.accessLevel > 0'>{{ qual_notarzt_green }}</q-badge>
-             <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ qual_notarzt_yellow }}</q-badge>
-             <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ qual_notarzt_red }}</q-badge>
-           </q-checkbox>
-         </q-form>
-        </q-card-section>
-    </q-card>
+    <Teileinheiten ref="lm" @input='save()' :items='items'/>
+    <Taktischequalifikation ref="takt" @input='save()' :items='items'/>
+    <Medizinischequalifikation ref="qual" @input='save()' :items='items'/>
     <q-card  class="shadow-8" style='margin-bottom:25px;' v-if='this.accessLevel > 0'>
         <q-card-section class='bg-dark text-white text-h5'>
           Ausstehende Rückmeldungen
@@ -226,31 +106,22 @@
 
 <script>
 import axios from 'axios'
+import Teileinheiten from '../components/Teileinheiten'
+import Taktischequalifikation from '../components/Taktischequalifikation'
+import Medizinischequalifikation from '../components/Medizinischequalifikation'
 const preferedTimeout1 = 24 * 3600 * 1000
 const preferedTimeout2 = 36 * 3600 * 1000
 
 export default {
   name: 'Anmeldung',
+  components: {
+    Teileinheiten,
+    Taktischequalifikation,
+    Medizinischequalifikation
+  },
   data: function () {
     const res = {
-      lm_fuehrung: false,
-      lm_sanitaet: false,
-      lm_betreuung: false,
-      lm_transport: false,
-      lm_tusi: false,
-      takt_gruppe: false,
-      takt_zug: false,
-      takt_verband: false,
-      takt_orgl: false,
-      takt_lna: false,
-      qual_sanh: false,
-      qual_rh: false,
-      qual_rs: false,
-      qual_kp: false,
-      qual_ra: false,
-      qual_ns: false,
-      qual_arzt: false,
-      qual_notarzt: false
+
     }
     const columns = []
     columns.push({ name: 'vornamen', align: 'left', label: 'Vornamen', field: 'vornamen', sortable: true })
@@ -283,6 +154,14 @@ export default {
       rowsPerPage: 32
     }
     return res
+  },
+  computed: {
+    lm () {
+      return Teileinheiten.data
+    },
+    takt () {
+      return Taktischequalifikation.data
+    }
   },
   methods: {
     changeAvail (n) {
@@ -320,22 +199,45 @@ export default {
         }
         const timeout1 = []
         const timeout2 = []
+        for (const c in parent.$refs) {
+          const component = parent.$refs[c]
+          component.reset()
+        }
         parent.items = response.data.Items
         for (let j = 0; j < response.data.Items.length; j++) {
           if (response.data.Items[j].timeStamp > new Date().getTime() - (preferedTimeout2)) {
-            for (var propName in response.data.Items[j]) {
+            // Traverse Childs
+            for (const c in parent.$refs) {
+              for (const propName in response.data.Items[j]) {
+                const component = parent.$refs[c]
+                if (typeof component[propName + '_' + response.data.Items[j].availability] !== 'undefined') {
+                  if (response.data.Items[j][propName]) {
+                    if (typeof cachepros[propName + '_green'] === 'undefined') cachepros[propName + '_green'] = 0
+                    if (typeof cachepros[propName + '_yellow'] === 'undefined') cachepros[propName + '_yellow'] = 0
+                    if (typeof cachepros[propName + '_red'] === 'undefined') cachepros[propName + '_red'] = 0
+                    cachepros[propName + '_' + response.data.Items[j].availability]++
+                  }
+                }
+                if (response.data.Items[j].code === window.localStorage.getItem('code')) {
+                  cachepros[propName] = response.data.Items[j][propName]
+                }
+              }
+            }
+
+            for (const propName in response.data.Items[j]) {
               if (typeof parent[propName + '_' + response.data.Items[j].availability] !== 'undefined') {
                 if (response.data.Items[j][propName]) {
                   if (typeof cachepros[propName + '_green'] === 'undefined') cachepros[propName + '_green'] = 0
                   if (typeof cachepros[propName + '_yellow'] === 'undefined') cachepros[propName + '_yellow'] = 0
                   if (typeof cachepros[propName + '_red'] === 'undefined') cachepros[propName + '_red'] = 0
-                  cachepros[propName + '_' + response.data.Items[j].availability]++
+                  // cachepros[propName + '_' + response.data.Items[j].availability]++
                 }
               }
               if (response.data.Items[j].code === window.localStorage.getItem('code')) {
                 cachepros[propName] = response.data.Items[j][propName]
               }
             }
+
             if (response.data.Items[j].availability === 'green') cachepros._green++
             if (response.data.Items[j].availability === 'yellow') cachepros._yellow++
             if (response.data.Items[j].availability === 'red') cachepros._red++
@@ -363,6 +265,12 @@ export default {
         }
         for (var n in cachepros) {
           parent[n] = cachepros[n]
+          for (const c in parent.$refs) {
+            const component = parent.$refs[c]
+            if (typeof component[n] !== 'undefined') {
+              component[n] = cachepros[n]
+            }
+          }
         }
         parent.timeout1 = timeout1
         parent.timeout2 = timeout2
@@ -373,7 +281,7 @@ export default {
         code: window.localStorage.getItem('code')
       }
 
-      for (var propName in this) {
+      for (const propName in this) {
         if ((propName.substr(0, 1) !== '$') && (propName.substr(0, 1) !== '_')) {
           if ((typeof this[propName] === 'string') || (typeof this[propName] === 'boolean') || (typeof this[propName] === 'number')) {
             if ((propName.indexOf('_green') < 0) && (propName.indexOf('_yellow') < 0) && (propName.indexOf('_red') < 0)) {
@@ -382,6 +290,20 @@ export default {
           }
         }
       }
+
+      for (const c in this.$refs) {
+        const component = this.$refs[c]
+        for (const propName in component) {
+          if ((propName.substr(0, 1) !== '$') && (propName.substr(0, 1) !== '_')) {
+            if ((typeof component[propName] === 'string') || (typeof component[propName] === 'boolean') || (typeof component[propName] === 'number')) {
+              if ((propName.indexOf('_green') < 0) && (propName.indexOf('_yellow') < 0) && (propName.indexOf('_red') < 0)) {
+                data[propName] = component[propName]
+              }
+            }
+          }
+        }
+      }
+
       const parent = this
       axios.post('https://api.corrently.io/core/status2', data).then(async function (response) {
         window.localStorage.setItem('s2', JSON.stringify(data))
