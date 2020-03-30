@@ -315,10 +315,22 @@ export default {
     if (window.localStorage.getItem('code') == null) {
       this.$router.push('/anmelden')
     } else {
-      if (typeof window.OneSignal === 'undefined') {
+      /* if (typeof window.OneSignal === 'undefined') {
         console.log('secondary OS registration')
         this.$oneSignal.setup(this.$branch.OS_PUBLIC_KEY)
-      }
+      } */
+      const p = this
+      const OneSignal = window.OneSignal || []
+      OneSignal.push(function () {
+        OneSignal.init({
+          allowLocalhostAsSecureOrigin: true,
+          appId: p.$branch.OS_PUBLIC_KEY,
+          notifyButton: {
+            enable: true
+          }
+        })
+      })
+      // this.$oneSignal.setup(this.$branch.OS_PUBLIC_KEY)
       if (window.localStorage.getItem('s2') !== null) {
         const obj = JSON.parse(window.localStorage.getItem('s2'))
         for (var propName in obj) {
