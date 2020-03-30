@@ -15,7 +15,7 @@
           Status2
         </q-toolbar-title>
 
-        <div><q-avatar><img src='/statics/patch.png'/></q-avatar></div>
+        <div><q-avatar><img src='/statics/app-icon.png'/></q-avatar></div>
       </q-toolbar>
     </q-header>
 
