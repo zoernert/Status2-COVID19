@@ -15,7 +15,7 @@
           Status2
         </q-toolbar-title>
 
-        <div><q-avatar><img src='/statics/app-icon.png'/></q-avatar></div>
+        <div><a href='https://www.startnext.com/status2/' target='_blank'>Info</a></div>
       </q-toolbar>
     </q-header>
 
