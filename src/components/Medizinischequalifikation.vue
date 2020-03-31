@@ -103,7 +103,6 @@ export default {
   computed: {
     codes () {
       const res = []
-      console.log('items length', this.items.length)
       for (let i = 0; i < this.items.length; i++) {
         const item = this.items[i]
         let found = false
@@ -119,7 +118,6 @@ export default {
           // res[c].push(item)
         }
       }
-      console.log(res)
       return res
     }
   },

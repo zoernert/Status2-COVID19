@@ -52,6 +52,33 @@
             Anmelden/Verknüpfen
           </q-item-section>
         </q-item>
+        <hr/>
+        <q-item
+        to="/datenschutz"
+        clickable
+        exact
+        v-ripple>
+          <q-item-section avatar>
+            <q-icon name="policy" />
+          </q-item-section>
+
+          <q-item-section>
+            Impressum/Datenschutz
+          </q-item-section>
+        </q-item>
+        <q-item
+        to="/lizenz"
+        clickable
+        exact
+        v-ripple>
+          <q-item-section avatar>
+            <q-icon name="gavel" />
+          </q-item-section>
+
+          <q-item-section>
+            Nutzungslizenz
+          </q-item-section>
+        </q-item>
       </q-list>
     </q-drawer>
 
