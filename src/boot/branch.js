@@ -32,7 +32,6 @@ export default ({ urlPath, redirect }) => {
       Vue.prototype.$branch.mod_ln = false
       Vue.prototype.$branch.mod_takt = false
       Vue.prototype.$branch.mod_psnv = true
-
     }
 
     resolve()
