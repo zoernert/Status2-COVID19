@@ -27,6 +27,11 @@
            <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ psnv_psa_yellow }}</q-badge>
            <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ psnv_psa_red }}</q-badge>
          </q-checkbox>
+         <q-checkbox v-model="psnv_manv" label="Gruppen (ManV)" @input='save()'><br/>
+           <q-badge color='green' class='text-dark' v-if='this.accessLevel > 0'>{{ psnv_manv_green }}</q-badge>
+           <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ psnv_manv_yellow }}</q-badge>
+           <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ psnv_manv_red }}</q-badge>
+         </q-checkbox>
          <q-checkbox v-model="psnv_e" label="Einsatzkräfte" @input='save()'><br/>
            <q-badge color='green' class='text-dark' v-if='this.accessLevel > 0'>{{ psnv_e_green }}</q-badge>
            <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ psnv_e_yellow }}</q-badge>
@@ -64,6 +69,7 @@ export default {
       psnv_opsa: false,
       psnv_psa: false,
       psnv_e: false,
+      psnv_manv: false,
       accessLevel: 0
     }
     res.classes = []
