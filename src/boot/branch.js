@@ -25,12 +25,11 @@ export default ({ urlPath, redirect }) => {
       Vue.prototype.$branch.mod_psnv = true
     }
 
-    if (process.env.BRANCH === 'development') {
+    if (process.env.BRANCH === 'drk-hd-rn-psnv') {
       console.log('drk-hd-rn-psnv')
       Vue.prototype.$branch.OS_PUBLIC_KEY = 'dcc00427-5530-46bf-93c5-f14fab73daf7'
       Vue.prototype.$branch.mod_psnv = true
     }
-
 
     resolve()
   })
