@@ -60,9 +60,12 @@
                     />
         </q-card-section>
     </q-card>
-    <Teileinheiten ref="lm" @input='save()' :items='items'/>
-    <Taktischequalifikation ref="takt" @input='save()' :items='items'/>
-    <Medizinischequalifikation ref="qual" @input='save()' :items='items'/>
+    <Einschraenkungen ref="s6" @input='save()' :items='items' v-if='this.$branch.mod_s6'/>
+    <PSNV ref="psnv" @input='save()' :items='items' v-if='this.$branch.mod_psnv'/>
+    <Teileinheiten ref="lm" @input='save()' :items='items' v-if='this.$branch.mod_lm'/>
+    <Taktischequalifikation ref="takt" @input='save()' :items='items' v-if='this.$branch.mod_takt'/>
+    <Medizinischequalifikation ref="qual" @input='save()' :items='items' v-if='this.$branch.mod_qual'/>
+
     <q-card  class="shadow-8" style='margin-bottom:25px;' v-if='this.accessLevel > 0'>
         <q-card-section class='bg-dark text-white text-h5'>
           Ausstehende Rückmeldungen
@@ -109,6 +112,8 @@ import axios from 'axios'
 import Teileinheiten from '../components/Teileinheiten'
 import Taktischequalifikation from '../components/Taktischequalifikation'
 import Medizinischequalifikation from '../components/Medizinischequalifikation'
+import Einschraenkungen from '../components/Einschraenkung'
+import PSNV from '../components/PSNV'
 const preferedTimeout1 = 24 * 3600 * 1000
 const preferedTimeout2 = 36 * 3600 * 1000
 
@@ -117,7 +122,9 @@ export default {
   components: {
     Teileinheiten,
     Taktischequalifikation,
-    Medizinischequalifikation
+    Medizinischequalifikation,
+    Einschraenkungen,
+    PSNV
   },
   data: function () {
     const res = {
