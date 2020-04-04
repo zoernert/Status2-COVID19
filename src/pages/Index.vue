@@ -76,7 +76,7 @@
             <q-item-section>
                 <q-item-label caption>{{ helfer.code }}</q-item-label>
                 <q-item-label>{{ helfer.vornamen }} {{ helfer.nachnamen }}</q-item-label>
-                <q-item-label>{{ helfer.mobilfunk }} {{ helfer.email }}</q-item-label>
+                <q-item-label><a v-bind:href='"tel:"+helfer.mobilfunk'>{{ helfer.mobilfunk }}</a> <a v-bind:href='"mailto:"+helfer.email'>{{ helfer.email }}</a></q-item-label>
             </q-item-section>
           </q-list>
         </q-card-section>
@@ -86,7 +86,7 @@
             <q-item-section>
                 <q-item-label caption>{{ helfer.code }}</q-item-label>
                 <q-item-label>{{ helfer.vornamen }} {{ helfer.nachnamen }}</q-item-label>
-                <q-item-label>{{ helfer.mobilfunk }} {{ helfer.email }} </q-item-label>
+                <q-item-label><a v-bind:href='"tel:"+helfer.mobilfunk'>{{ helfer.mobilfunk }}</a> <a v-bind:href='"mailto:"+helfer.email'>{{ helfer.email }}</a></q-item-label>
             </q-item-section>
           </q-list>
         </q-card-section>
