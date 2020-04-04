@@ -31,7 +31,7 @@ export default ({ urlPath, redirect }) => {
       Vue.prototype.$branch.mod_psnv = true
     }
 
-    if (process.env.BRANCH === 'e5b7d1f9-d640-4c08-ae5b-aaf6bdd81a19') {
+    if (process.env.BRANCH === 'drk-ov-wiesloch') {
       console.log(process.env.BRANCH)
       Vue.prototype.$branch.OS_PUBLIC_KEY = 'e5b7d1f9-d640-4c08-ae5b-aaf6bdd81a19'
       Vue.prototype.$branch.mod_s6 = true
