@@ -2,7 +2,6 @@ import Vue from 'vue'
 
 export default ({ urlPath, redirect }) => {
   return new Promise((resolve, reject) => {
-
     /* Default is status2.net */
     Vue.prototype.$branch = {
       OS_PUBLIC_KEY: 'efc392fc-0d14-40b1-bda7-891ce18b9eca',
