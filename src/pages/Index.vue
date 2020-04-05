@@ -102,6 +102,9 @@
           >
           </q-table>
         </q-card-section>
+        <q-card-section>
+          <q-btn @click='xls()' label='Export' icon='cloud_download'/>
+        </q-card-section>
     </q-card>
     <q-toggle v-model="viewStaerke" @input='if(viewStaerke) accessLevel = 1; else accessLevel = 0' v-if='this.accessLevel > 0' label='Stärkemeldungen anzeigen'/>
   </q-page>
@@ -109,6 +112,7 @@
 
 <script>
 import axios from 'axios'
+import XLSX from 'xlsx'
 import Teileinheiten from '../components/Teileinheiten'
 import Taktischequalifikation from '../components/Taktischequalifikation'
 import Medizinischequalifikation from '../components/Medizinischequalifikation'
@@ -282,6 +286,37 @@ export default {
         parent.timeout1 = timeout1
         parent.timeout2 = timeout2
       })
+    },
+    xls () {
+      const wb = XLSX.utils.book_new()
+      wb.Props = {
+        Title: 'Status2 ' + process.env.BRANCH,
+        Subject: 'Verfügbarkeitsinformation',
+        Author: 'STROMDAO GmbH',
+        CreatedDate: new Date()
+      }
+      wb.SheetNames.push('Alle Helfer')
+      const rows = []
+      const firstrow = ['Nachnamen', 'Vornamen', 'Verfügbarkeit', 'Code']
+      for (const prop in this.items[0]) {
+        firstrow.push(prop)
+      }
+      rows.push(firstrow)
+      for (let i = 0; i < this.items.length; i++) {
+        const row = []
+        row.push(this.items[i].nachnamen)
+        row.push(this.items[i].vornamen)
+        row.push(this.items[i].availability)
+        row.push(this.items[i].code)
+        for (const prop in this.items[0]) {
+          row.push(this.items[i][prop])
+        }
+        rows.push(row)
+      }
+      const ws = XLSX.utils.aoa_to_sheet(rows)
+      wb.Sheets['Alle Helfer'] = ws
+      XLSX.writeFile(wb, 'Status2.xlsx')
+      console.log(this.items)
     },
     save () {
       const data = {

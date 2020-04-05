@@ -16,7 +16,7 @@
     "axios": "^0.19.2",
     "quasar": "^1.0.0",
     "quasar-app-extension-onesignal": "^0.2.2",
-    "sheetjs": "^2.0.0"
+    "xlsx": "^0.15.6"
   },
   "devDependencies": {
     "@quasar/app": "^1.0.0",
