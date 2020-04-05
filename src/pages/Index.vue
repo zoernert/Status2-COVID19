@@ -60,9 +60,12 @@
                     />
         </q-card-section>
     </q-card>
-    <Teileinheiten ref="lm" @input='save()' :items='items'/>
-    <Taktischequalifikation ref="takt" @input='save()' :items='items'/>
-    <Medizinischequalifikation ref="qual" @input='save()' :items='items'/>
+    <Einschraenkungen ref="s6" @input='save()' :items='items' v-if='this.$branch.mod_s6'/>
+    <PSNV ref="psnv" @input='save()' :items='items' v-if='this.$branch.mod_psnv'/>
+    <Teileinheiten ref="lm" @input='save()' :items='items' v-if='this.$branch.mod_lm'/>
+    <Taktischequalifikation ref="takt" @input='save()' :items='items' v-if='this.$branch.mod_takt'/>
+    <Medizinischequalifikation ref="qual" @input='save()' :items='items' v-if='this.$branch.mod_qual'/>
+
     <q-card  class="shadow-8" style='margin-bottom:25px;' v-if='this.accessLevel > 0'>
         <q-card-section class='bg-dark text-white text-h5'>
           Ausstehende Rückmeldungen
@@ -73,7 +76,7 @@
             <q-item-section>
                 <q-item-label caption>{{ helfer.code }}</q-item-label>
                 <q-item-label>{{ helfer.vornamen }} {{ helfer.nachnamen }}</q-item-label>
-                <q-item-label>{{ helfer.mobilfunk }} {{ helfer.email }}</q-item-label>
+                <q-item-label><a v-bind:href='"tel:"+helfer.mobilfunk'>{{ helfer.mobilfunk }}</a> <a v-bind:href='"mailto:"+helfer.email'>{{ helfer.email }}</a></q-item-label>
             </q-item-section>
           </q-list>
         </q-card-section>
@@ -83,7 +86,7 @@
             <q-item-section>
                 <q-item-label caption>{{ helfer.code }}</q-item-label>
                 <q-item-label>{{ helfer.vornamen }} {{ helfer.nachnamen }}</q-item-label>
-                <q-item-label>{{ helfer.mobilfunk }} {{ helfer.email }} </q-item-label>
+                <q-item-label><a v-bind:href='"tel:"+helfer.mobilfunk'>{{ helfer.mobilfunk }}</a> <a v-bind:href='"mailto:"+helfer.email'>{{ helfer.email }}</a></q-item-label>
             </q-item-section>
           </q-list>
         </q-card-section>
@@ -99,6 +102,9 @@
           >
           </q-table>
         </q-card-section>
+        <q-card-section>
+          <q-btn @click='xls()' label='Export' icon='cloud_download'/>
+        </q-card-section>
     </q-card>
     <q-toggle v-model="viewStaerke" @input='if(viewStaerke) accessLevel = 1; else accessLevel = 0' v-if='this.accessLevel > 0' label='Stärkemeldungen anzeigen'/>
   </q-page>
@@ -106,9 +112,12 @@
 
 <script>
 import axios from 'axios'
+import XLSX from 'xlsx'
 import Teileinheiten from '../components/Teileinheiten'
 import Taktischequalifikation from '../components/Taktischequalifikation'
 import Medizinischequalifikation from '../components/Medizinischequalifikation'
+import Einschraenkungen from '../components/Einschraenkung'
+import PSNV from '../components/PSNV'
 const preferedTimeout1 = 24 * 3600 * 1000
 const preferedTimeout2 = 36 * 3600 * 1000
 
@@ -117,7 +126,9 @@ export default {
   components: {
     Teileinheiten,
     Taktischequalifikation,
-    Medizinischequalifikation
+    Medizinischequalifikation,
+    Einschraenkungen,
+    PSNV
   },
   data: function () {
     const res = {
@@ -275,6 +286,37 @@ export default {
         parent.timeout1 = timeout1
         parent.timeout2 = timeout2
       })
+    },
+    xls () {
+      const wb = XLSX.utils.book_new()
+      wb.Props = {
+        Title: 'Status2 ' + process.env.BRANCH,
+        Subject: 'Verfügbarkeitsinformation',
+        Author: 'STROMDAO GmbH',
+        CreatedDate: new Date()
+      }
+      wb.SheetNames.push('Alle Helfer')
+      const rows = []
+      const firstrow = ['Nachnamen', 'Vornamen', 'Verfügbarkeit', 'Code']
+      for (const prop in this.items[0]) {
+        firstrow.push(prop)
+      }
+      rows.push(firstrow)
+      for (let i = 0; i < this.items.length; i++) {
+        const row = []
+        row.push(this.items[i].nachnamen)
+        row.push(this.items[i].vornamen)
+        row.push(this.items[i].availability)
+        row.push(this.items[i].code)
+        for (const prop in this.items[0]) {
+          row.push(this.items[i][prop])
+        }
+        rows.push(row)
+      }
+      const ws = XLSX.utils.aoa_to_sheet(rows)
+      wb.Sheets['Alle Helfer'] = ws
+      XLSX.writeFile(wb, 'Status2.xlsx')
+      console.log(this.items)
     },
     save () {
       const data = {
