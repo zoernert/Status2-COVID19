@@ -29,13 +29,14 @@ export default ({ urlPath, redirect }) => {
       console.log('drk-hd-rn-psnv')
       Vue.prototype.$branch.OS_PUBLIC_KEY = 'dcc00427-5530-46bf-93c5-f14fab73daf7'
       Vue.prototype.$branch.mod_psnv = true
+      Vue.prototype.$branch.mod_lm = false
     }
 
     if (process.env.BRANCH === 'drk-ov-wiesloch') {
-        console.log(process.env.BRANCH)
-        Vue.prototype.$branch.OS_PUBLIC_KEY = 'e5b7d1f9-d640-4c08-ae5b-aaf6bdd81a19'
-        Vue.prototype.$branch.mod_s6 = true
-        Vue.prototype.$branch.mod_psnv = false
+      console.log(process.env.BRANCH)
+      Vue.prototype.$branch.OS_PUBLIC_KEY = 'e5b7d1f9-d640-4c08-ae5b-aaf6bdd81a19'
+      Vue.prototype.$branch.mod_s6 = true
+      Vue.prototype.$branch.mod_psnv = false
     }
 
     resolve()
