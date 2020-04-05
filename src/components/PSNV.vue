@@ -37,6 +37,31 @@
            <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ psnv_e_yellow }}</q-badge>
            <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ psnv_e_red }}</q-badge>
          </q-checkbox>
+         <q-checkbox v-model="psnv_motor" label="Motorisiert (Auto)" @input='save()'><br/>
+           <q-badge color='green' class='text-dark' v-if='this.accessLevel > 0'>{{ psnv_motor_green }}</q-badge>
+           <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ psnv_motor_yellow }}</q-badge>
+           <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ psnv_motor_red }}</q-badge>
+         </q-checkbox>
+         <q-checkbox v-model="psnv_kv" label="KV Gebiet (gesamt)" @input='save()'><br/>
+           <q-badge color='green' class='text-dark' v-if='this.accessLevel > 0'>{{ psnv_kv_green }}</q-badge>
+           <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ psnv_kv_yellow }}</q-badge>
+           <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ psnv_kv_red }}</q-badge>
+         </q-checkbox>
+         <q-checkbox v-model="psnv_hd" label="Heidelberg" @input='save()'><br/>
+           <q-badge color='green' class='text-dark' v-if='this.accessLevel > 0'>{{ psnv_hd_green }}</q-badge>
+           <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ psnv_hd_yellow }}</q-badge>
+           <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ psnv_hd_red }}</q-badge>
+         </q-checkbox>
+         <q-checkbox v-model="psnv_snh" label="Sinsheim" @input='save()'><br/>
+           <q-badge color='green' class='text-dark' v-if='this.accessLevel > 0'>{{ psnv_snh_green }}</q-badge>
+           <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ psnv_snh_yellow }}</q-badge>
+           <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ psnv_snh_red }}</q-badge>
+         </q-checkbox>
+         <q-checkbox v-model="psnv_wie" label="Wiesloch/Walldorf" @input='save()'><br/>
+           <q-badge color='green' class='text-dark' v-if='this.accessLevel > 0'>{{ psnv_wie_green }}</q-badge>
+           <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ psnv_wie_yellow }}</q-badge>
+           <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ psnv_wie_red }}</q-badge>
+         </q-checkbox>
        </q-form>
        <q-expansion-item
          expand-separator
@@ -70,6 +95,11 @@ export default {
       psnv_psa: false,
       psnv_e: false,
       psnv_manv: false,
+      psnv_motor: false,
+      psnv_kv: false,
+      psnv_hd: false,
+      psnv_snh: false,
+      psnv_wie: false,
       accessLevel: 0
     }
     res.classes = []

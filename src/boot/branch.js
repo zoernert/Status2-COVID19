@@ -2,13 +2,14 @@ import Vue from 'vue'
 
 export default ({ urlPath, redirect }) => {
   return new Promise((resolve, reject) => {
+    /* Default is status2.net */
     Vue.prototype.$branch = {
       OS_PUBLIC_KEY: 'efc392fc-0d14-40b1-bda7-891ce18b9eca',
       mod_lm: true,
       mod_takt: true,
       mod_qual: true,
       mod_s6: true,
-      mod_psnv: false
+      mod_psnv: true
     }
 
     if (process.env.BRANCH === 'stadt-mannheim-1ee') {
