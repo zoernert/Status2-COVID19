@@ -96,7 +96,8 @@
 
 <p>Sofern nicht gemäß geltendem Recht vorgeschrieben oder schriftlich vereinbart, erfolgt die Bereitstellung der im Rahmen der Lizenz verbreiteten Software OHNE GEWÄHR ODER VORBEHALTE – ganz gleich, ob ausdrücklich oder stillschweigend. Informationen über die jeweiligen Bedingungen für Genehmigungen und Einschränkungen im Rahmen der Lizenz finden Sie in der Lizenz.</p>
 
-</q-card-section>
-          </q-card>
+        </q-card-section>
+  </q-card>
+</q-card>
         </q-page>
         </template>

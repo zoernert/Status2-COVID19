@@ -63,7 +63,7 @@
                 flat
                 virtual-scroll
                 :pagination.sync="pagination"
-          >
+          />
        </div>
        </q-expansion-item>
       </q-card-section>
