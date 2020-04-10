@@ -48,7 +48,7 @@
                 flat
                 virtual-scroll
                 :pagination.sync="pagination"
-          >
+          />
        </div>
        </q-expansion-item>
       </q-card-section>
@@ -80,6 +80,9 @@ export default {
     columns.push({ name: 'nachnamen', align: 'left', label: 'Nachnamen', field: 'nachnamen', sortable: true })
     columns.push({ name: 'availability', align: 'left', label: 'Verfügbarkeit', field: 'availability', sortable: true })
     res.columns = columns
+    res.pagination = {
+      rowsPerPage: 32
+    }
     return res
   },
   computed: {
