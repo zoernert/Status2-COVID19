@@ -22,7 +22,7 @@
            <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ s6_gesundheit_yellow }}</q-badge>
            <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ s6_gesundheit_red }}</q-badge>
          </q-checkbox>
-         <q-checkbox v-model="s6_bos" label="Andere BOS Einheit" @input='save()'><br/>
+         <q-checkbox v-model="s6_bos" label="Andere BOS Einheit (Formation)" @input='save()'><br/>
            <q-badge color='green' class='text-dark' v-if='this.accessLevel > 0'>{{ s6_bos_green }}</q-badge>
            <q-badge color='yellow' class='text-dark' v-if='this.accessLevel > 0'>{{ s6_bos_yellow }}</q-badge>
            <q-badge color='red' class='text-dark' v-if='this.accessLevel > 0'>{{ s6_bos_red }}</q-badge>
