@@ -226,6 +226,7 @@ export default {
     },
     schizo () {
       window.localStorage.setItem('code', this.selected[0].code)
+      window.localStorage.removeItem('s2')
       this.$router.push('/anmelden')
     },
     retrieve () {
@@ -241,7 +242,7 @@ export default {
         const timeout2 = []
         for (const c in parent.$refs) {
           const component = parent.$refs[c]
-          component.reset()
+          if ((typeof component !== 'undefined') && (typeof component.reset === 'function')) component.reset()
         }
         parent.items = response.data.Items
         for (let j = 0; j < response.data.Items.length; j++) {
