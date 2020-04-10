@@ -90,8 +90,12 @@
             </q-item-section>
           </q-list>
         </q-card-section>
+    </q-card>
+    <q-card  class="shadow-8" style='margin-bottom:25px;' v-if='this.accessLevel > 0'>
+        <q-card-section class='bg-dark text-white text-h5'>
+          Helferübersicht
+        </q-card-section>
         <q-card-section>
-          <div class='text-h6'>Helferübersicht</div>
           <q-table
                 :data="items"
                 :columns="columns"
@@ -99,14 +103,17 @@
                 flat
                 virtual-scroll
                 :pagination.sync="pagination"
+                :selected.sync="selected"
+                selection="single"
           >
           </q-table>
+          <q-btn @click='schizo()' color='red' label='Zum Helfer werden' icon='spa' v-if='selected.length > 0'/>
         </q-card-section>
         <q-card-section>
           <q-btn @click='xls()' label='Export' icon='cloud_download'/>
         </q-card-section>
     </q-card>
-    <q-toggle v-model="viewStaerke" @input='if(viewStaerke) accessLevel = 1; else accessLevel = 0' v-if='this.accessLevel > 0' label='Stärkemeldungen anzeigen'/>
+    <q-toggle v-model="viewStaerke" @input='dspLevel()' v-if='this.accessLevel > 0' label='Stärkemeldungen anzeigen'/>
   </q-page>
 </template>
 
@@ -118,6 +125,8 @@ import Taktischequalifikation from '../components/Taktischequalifikation'
 import Medizinischequalifikation from '../components/Medizinischequalifikation'
 import Einschraenkungen from '../components/Einschraenkung'
 import PSNV from '../components/PSNV'
+import { date } from 'quasar'
+
 const preferedTimeout1 = 24 * 3600 * 1000
 const preferedTimeout2 = 36 * 3600 * 1000
 
@@ -137,7 +146,19 @@ export default {
     const columns = []
     columns.push({ name: 'vornamen', align: 'left', label: 'Vornamen', field: 'vornamen', sortable: true })
     columns.push({ name: 'nachnamen', align: 'left', label: 'Nachnamen', field: 'nachnamen', sortable: true })
-    columns.push({ name: 'availability', align: 'left', label: 'Verfügbarkeit', field: 'availability', sortable: true })
+    columns.push({
+      name: 'availability',
+      align: 'left',
+      label: 'Verfügbarkeit',
+      field: 'availability',
+      sortable: true,
+      format: (val, row) => {
+        if (val === 'green') return 'Verfügbar'
+        if (val === 'yellow') return 'Bedingt'
+        if (val === 'red') return 'Nicht'
+      }
+    })
+    columns.push({ name: 'timeStamp', align: 'left', label: 'Aktualisiert', field: 'timeStamp', sortable: true, format: (val, row) => { return date.formatDate(val, 'HH:mm DD.MM.') } })
     for (var propName in res) {
       columns.push({ name: propName, align: 'left', label: propName, field: propName, sortable: true })
       if (typeof res[propName + '_green'] === 'undefined') res[propName + '_green'] = 0
@@ -159,6 +180,7 @@ export default {
     res.accessLevel = 0
     res.viewStaerke = false
     res.email = ''
+    res.selected = []
     res.items = []
     res.osid = ''
     res.pagination = {
@@ -175,6 +197,9 @@ export default {
     }
   },
   methods: {
+    dspLevel () {
+      if (this.viewStaerke) this.accessLevel = 1; else this.accessLevel = 0
+    },
     changeAvail (n) {
       this.availability = n
       this.availabilitybg = 'bg-' + n + ' text-black text-h5'
@@ -199,6 +224,11 @@ export default {
         }
       }])
     },
+    schizo () {
+      window.localStorage.setItem('code', this.selected[0].code)
+      window.localStorage.removeItem('s2')
+      this.$router.push('/anmelden')
+    },
     retrieve () {
       const parent = this
       const domain = this.domain
@@ -212,7 +242,7 @@ export default {
         const timeout2 = []
         for (const c in parent.$refs) {
           const component = parent.$refs[c]
-          component.reset()
+          if ((typeof component !== 'undefined') && (typeof component.reset === 'function')) component.reset()
         }
         parent.items = response.data.Items
         for (let j = 0; j < response.data.Items.length; j++) {
@@ -319,6 +349,7 @@ export default {
       console.log(this.items)
     },
     save () {
+      console.log('saving')
       const data = {
         code: window.localStorage.getItem('code')
       }
