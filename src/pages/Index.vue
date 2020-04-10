@@ -215,7 +215,12 @@ export default {
       OneSignal.push(['getNotificationPermission', function (permission) {
         OneSignal.push(['sendTags', { code: window.localStorage.getItem('code'), domain: location.hostname, availability: parent.availability }])
         if (permission === 'granted') {
-          window.OneSignal.getUserId().then(function (x) { parent.osid = x })
+          window.OneSignal.getUserId().then(function (x) {
+            parent.osid = x
+            if (x !== null) {
+              window.localStorage.setItem('deviceId', x)
+            }
+          })
         } else {
           console.log('notGranted')
           setTimeout(function () {
@@ -232,6 +237,11 @@ export default {
     retrieve () {
       const parent = this
       const domain = this.domain
+      if ((this.osid === null) || (this.osid.length < 1)) {
+        if (window.localStorage.getItem('deviceId') !== null) {
+          this.osid = window.localStorage.getItem('deviceId')
+        }
+      }
       axios.get('https://api.corrently.io/core/status2?domain=' + domain + '&osid=' + this.osid + '&code=' + window.localStorage.getItem('code')).then(async function (response) {
         const cachepros = {
           _green: 0,
