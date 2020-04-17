@@ -73,3 +73,10 @@ Entwickelt und gepflegt wird Status2 durch Thorsten Zoerner und das Team seines 
 
 ## Mitwirken
 Bitte einen Pull-Request mit einem eigenen Branch machen. Der Branch wird automatisch als Sub-Domain von status2.net angelegt (via Netlify). Damit Pushbenachrichtigungen funktionieren, ist zusätzlich ein App-Key notwendig, der durch den Maintainer des Repository gesetzt wird.
+
+
+## Mitwirken bei #CAREhacktCORONA
+Offzieller Teams Raum (nicht DGVO konform): https://teams.microsoft.com/l/channel/19%3a79e243f47794476aa63bd792a9c71df2%40thread.tacv2/Verl%25C3%25A4ssliche%2520St%25C3%25A4rkeermittlung%2520f%25C3%25BCr%2520Ehrenamt?groupId=9cb7f405-13f6-471a-b27c-b46362d6d807&tenantId=dc6b86c2-d505-4035-be83-238024182503
+
+DSGVO konforme StandBy Konferenz:
+https://meet.corrently.cloud/CAREhacktCORONA
